@@ -20,15 +20,16 @@ $data_saida = $_POST['data_saida'];
 $valor_por_pessoa = $_POST['valor_por_pessoa'];
 $numero_quarto = $_POST['numero_quarto'];
 
-// Inserir dados no banco de dados
-$query = "INSERT INTO reservas (nome, quantidade_pessoas, data_entrada, data_saida, valor_por_pessoa, numero_quarto) VALUES ('$nome', $quantidade_pessoas, '$data_entrada', '$data_saida', $valor_por_pessoa, $numero_quarto)";
+// Inserir dados no banco de dados usando prepared statements
+$query = $conexao->prepare("INSERT INTO reservas (nome, quantidade_pessoas, data_entrada, data_saida, valor_por_pessoa, numero_quarto) VALUES (?, ?, ?, ?, ?, ?)");
+$query->bind_param("sissii", $nome, $quantidade_pessoas, $data_entrada, $data_saida, $valor_por_pessoa, $numero_quarto);
 
-if ($conexao->query($query) === TRUE) {
+if ($query->execute()) {
     // Redirecionar de volta para o formulário após a inserção bem-sucedida
     header("Location: reservas.html");
     exit();
 } else {
-    echo "Erro ao registrar reserva: " . $conexao->error;
+    echo "Erro ao registrar reserva: " . $query->error;
 }
 
 // Fechar a conexão
