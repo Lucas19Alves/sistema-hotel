@@ -54,7 +54,7 @@ $resultado = $conexao->query($query);
 <body>
     
     <div class="container mt-5">
-        <h2><a class="fa fa-arrow-alt-circle-left" href="index.php"></a> Reservas</h2>
+        <h2><a class="fa fa-arrow-alt-circle-left" href="reservas.html"></a> Reservas</h2>
         <table class="table">
             <thead>
                 <tr>
