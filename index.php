@@ -14,7 +14,7 @@
     .room {
       width: 250px;
       height: 120px;
-      margin: 10px;
+      margin-bottom: 10px;
       text-align: center;
       padding-top: 30px;
       font-size: 18px;
@@ -42,13 +42,44 @@
       background-color: #ffc107;
       color: #333;
     }
+
+    .navbar {
+      background-color: #3498db;
+      /* Cor de fundo da navbar */
+    }
+
+    .navbar-brand,
+    .navbar-nav .nav-link {
+      color: #fff !important;
+      /* Cor do texto na navbar */
+    }
+
+    .navbar-toggler-icon {
+      background-color: #fff;
+      /* Cor do ícone do botão de toggle */
+    }
+
+    .navbar {
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      /* Sombra suave na navbar */
+    }
+
+    .navbar-nav .nav-link {
+      transition: color 0.3s ease;
+      /* Transição suave para a mudança de cor do texto */
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: #007bff !important;
+      /* Cor do texto ao passar o mouse */
+    }
   </style>
 </head>
 
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="index.html">Hotel Minas Bahia</a>
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <a class="navbar-brand" href="index.php">Hotel Minas Bahia</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -56,23 +87,33 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href="index.php">Quartos</a>
+          <a class="nav-link" href="index.php"><i class="fa fa-bed"></i> Quartos |</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="cadastro.html">Cadastro</a>
+          <a class="nav-link" href="cadastro.html"><i class="fa fa-address-card"></i> Cadastro |</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="consulta.html">Consulta</a>
+          <a class="nav-link" href="consulta.html"><i class="fa fa-check"></i> Consulta |</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="reservas.html">Reservas</a>
+          <a class="nav-link" href="reservas.html"><i class="fa fa-book"></i> Reservas</a>
+        </li>
+      </ul>
+      <!-- Adicionando links à direita -->
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="https://hotel.bitzsoftwares.com.br/sistema/nfe/" target="_blank">NFe</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://hotel.bitzsoftwares.com.br/sistema/nfce/" target="_blank"> NFCe</a>
         </li>
       </ul>
     </div>
   </nav>
 
+
   <div class="container mt-5">
-    <h2 class="text-center mb-4">Gerenciamento de Quartos</h2>
+    <h2 class="text-center border-bottom border-secondary pb-3 mb-4">Gerenciamento de Quartos</h2>
     <div class="row" id="quartos">
       <?php
       // Função para obter o estado salvo dos quartos ou atribuir um estado padrão
@@ -129,15 +170,15 @@
 
 
     document.addEventListener('DOMContentLoaded', function () {
-  // Restaura os estados dos quartos ao carregar a página
-  for (var numeroQuarto = 101; numeroQuarto <= 126; numeroQuarto++) {
-    var room = document.querySelector('[data-quarto="' + numeroQuarto + '"]');
-    if (room) {
-      room.classList.remove('empty', 'reserved', 'occupied', 'dirty');
-      room.classList.add(obterEstadoQuarto(numeroQuarto));
-    }
-  }
-});
+      // Restaura os estados dos quartos ao carregar a página
+      for (var numeroQuarto = 101; numeroQuarto <= 126; numeroQuarto++) {
+        var room = document.querySelector('[data-quarto="' + numeroQuarto + '"]');
+        if (room) {
+          room.classList.remove('empty', 'reserved', 'occupied', 'dirty');
+          room.classList.add(obterEstadoQuarto(numeroQuarto));
+        }
+      }
+    });
 
 
   </script>
